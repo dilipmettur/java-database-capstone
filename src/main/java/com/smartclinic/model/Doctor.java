@@ -1,6 +1,6 @@
-package model;
+package com.smartclinic.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
