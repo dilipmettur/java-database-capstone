@@ -12,7 +12,7 @@ public class PrescriptionController {
     public Map<String, String> issuePrescription(@RequestParam int appointmentId, @RequestBody String medicineDetails) {
         // Logic to link prescription to appointment
         Map<String, String> response = new HashMap<>();
-        response.setStatus("SUCCESS");
+        response.put("status", "success");
         response.put("message", "Prescription issued for Appointment ID: " + appointmentId);
         return response;
     }
