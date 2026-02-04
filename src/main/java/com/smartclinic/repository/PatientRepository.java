@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
     // You can add custom search methods here if needed, such as:
     // List<Patient> findByNameContaining(String name);
+java.util.List<Patient> findByEmail(String email);
 }
