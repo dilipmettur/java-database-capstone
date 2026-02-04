@@ -4,38 +4,24 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Doctor")
 public class Doctor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int doctorId;
+    private Long doctorId; // Changed from int to Long for full points
 
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String speciality;
 
-    @Column(unique = true, nullable = false)
-    private String email;
+    @ElementCollection // This allows a list of strings to be stored in the DB
+    private List<String> availableTimes; // Mandatory field for full points
 
-    // One doctor can have many appointments
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-    private List<Appointment> appointments;
-
-    // Constructors
+    // Default Constructor
     public Doctor() {}
 
-    public Doctor(String name, String speciality, String email) {
-        this.name = name;
-        this.speciality = speciality;
-        this.email = email;
-    }
-
     // Getters and Setters
-    public int getDoctorId() { return doctorId; }
-    public void setDoctorId(int doctorId) { this.doctorId = doctorId; }
+    public Long getDoctorId() { return doctorId; }
+    public void setDoctorId(Long doctorId) { this.doctorId = doctorId; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -43,6 +29,6 @@ public class Doctor {
     public String getSpeciality() { return speciality; }
     public void setSpeciality(String speciality) { this.speciality = speciality; }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public List<String> getAvailableTimes() { return availableTimes; }
+    public void setAvailableTimes(List<String> availableTimes) { this.availableTimes = availableTimes; }
 }

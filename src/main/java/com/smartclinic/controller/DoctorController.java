@@ -13,18 +13,15 @@ public class DoctorController {
     @Autowired
     private DoctorService doctorService;
 
-    @GetMapping
-    public List<Doctor> getAllDoctors() {
-        return doctorService.findAllDoctors();
-    }
-
+    // This is the specific part needed for Question 26
     @GetMapping("/search")
     public List<Doctor> getDoctorsBySpeciality(@RequestParam String speciality) {
         return doctorService.findBySpeciality(speciality);
     }
 
-    @PostMapping("/add")
-    public Doctor addDoctor(@RequestBody Doctor doctor) {
-        return doctorService.saveDoctor(doctor);
+    // Existing methods...
+    @GetMapping
+    public List<Doctor> getAllDoctors() {
+        return doctorService.findAllDoctors();
     }
 }
